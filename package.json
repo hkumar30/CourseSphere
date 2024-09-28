@@ -1,0 +1,33 @@
+{
+  "name": "coursesphere",
+  "version": "1.0.0",
+  "description": "CourseSphere allows students to discover top professors, view course ratings from RateMyProfessors and Reddit, ask questions with our virtual assistant, and participate in course-related discussions on our general forum.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hkumar30/CourseSphere.git"
+  },
+  "keywords": [
+    "js",
+    "javascript",
+    "express",
+    "sql",
+    "api",
+    "restapi",
+    "openai"
+  ],
+  "author": "Harsh Kumar, Ansh Gopinath, Amal Shifwath Shaik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hkumar30/CourseSphere/issues"
+  },
+  "homepage": "https://github.com/hkumar30/CourseSphere#readme",
+  "dependencies": {
+    "express": "^4.21.0",
+    "nodemon": "^3.1.7",
+    "sqlite": "^5.1.1"
+  }
+}
