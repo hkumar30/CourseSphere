@@ -3,15 +3,15 @@ CourseSphere allows students to discover top professors, view course ratings fro
 
 1. Clone the Repository
 
-	git clone https://github.com/hkumar30/CourseSphere.git
+		git clone https://github.com/hkumar30/CourseSphere.git
 
 2. Install Dependencies
 
-	npm install
+		npm install
 
 3. Initialize and Start
 
-	npm start
+		npm start
 
 Alternatively,
 
@@ -26,8 +26,8 @@ Access the Website
 	1.	Open a browser and navigate to http://localhost:8080/.
 	2.	Use the search bar to find a course by entering a subject code and course number (e.g., CSE and 101).
 	3.	View details such as:
-	•	Reviews and ratings from RateMyProfessor
-	•	Reddit discussions related to the course
+		•	Reviews and ratings from RateMyProfessor
+		•	Reddit discussions related to the course
 	4.	Post and view messages in the Community Forum.
 	5.	Interact with the AI Chatbot to get course recommendations and advice.
 
