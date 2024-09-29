@@ -205,6 +205,36 @@ app.get('/logout', async (req, res) => {
     res.redirect('/');
 })
 
+app.get('/messages', async (req, res) => {
+    try{
+        const db = await dbPromise;
+
+        //Pull the messages from the database.
+        const messages = await db.all(
+            `SELECT Messages.id, Messages.message, Users.username as author 
+            FROM Messages LEFT JOIN Users WHERE Messages.authorId = Users.id;`);
+        console.log('messages', messages);
+
+        const user = await db.get('SELECT username FROM Users WHERE id = ?', req.user);
+        
+        //If the user creates another message, render the same.
+        res.render('messages', { messages, user: user.username });
+    }
+
+    catch(err){
+        console.log(err)
+        res.render("home", { error: "Something went wrong. Try again."});
+    }
+})
+
+app.post('/messages', async (req, res) => {
+    const db = await dbPromise;
+    
+    //Add the message written by the user to the database.
+    await db.run('INSERT INTO Messages (message, authorId) VALUES (?, ?);', req.body.message, req.user)
+    res.redirect('/messages')
+})
+
 async function setup(){
     const db = await dbPromise;
 

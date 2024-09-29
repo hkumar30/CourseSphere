@@ -6,8 +6,8 @@
        border: 1px solid black;
        border-radius: 5px;
        padding: 2rem;
-       height: 300px; /* Increased height */
-       width: 200px; /* Set a fixed width */
+       height: 300px;
+       width: 200px;
        display: flex;
        flex-direction: column;
        justify-content: space-between;
@@ -52,5 +52,12 @@
                 View on Reddit
             </a>
         </div>
+        <div class="reddit-card flex-grow-1 flex-shrink-1">
+            <h6>Top Reddit Posts for {{courseName}}</h6>
+            <a href="https://www.reddit.com/r/ASU/search/?q={{courseName}}" class="btn btn-primary">
+                View on Reddit
+            </a>
+        </div>
     </div>
+    
 </div>
