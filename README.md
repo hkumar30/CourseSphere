@@ -13,10 +13,10 @@ CourseSphere allows students to discover top professors, view course ratings fro
 
 		npm start
 
-Alternatively,
-
-	npm run migrate
-	node index.js
+   Alternatively,
+	
+		npm run migrate
+		node index.js
 
 
 # Usage
