@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="main.css">
+<style>
+    .reddit-card {
+       flex-basis: calc(20% - 10px); 
+       margin: 5px;
+       border: 1px solid black;
+       border-radius: 5px;
+       padding: 2rem;
+       height: 300px; /* Increased height */
+       width: 200px; /* Set a fixed width */
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+    }
+
+    .page-space {
+        height: 100px;
+    }
+</style>
+
+<h1>{{courseName}}</h1>
+<h5>Description: {{courseDescription}}</h5>
+<h5>Instructor: {{courseInstructor}}</h5>
+<h5>Difficulty Rating: {{courseDifficulty}}</h5>
+<h5>Take this course? (based on your interests): {{courseInterests}}</h5>
+<div class="page-space">
+
+</div>
+<div class="card">
+    <div class="card-body d-flex flex-wrap justify-content-between" style="display: flex;">
+        <div class="reddit-card flex-grow-1 flex-shrink-1">
+            <h6>Top Reddit Posts for {{courseName}}</h6>
+            <a href="https://www.reddit.com/r/ASU/search/?q={{courseName}}" class="btn btn-primary">
+                View on Reddit
+            </a>
+        </div>
+        <div class="reddit-card flex-grow-1 flex-shrink-1">
+            <h6>Top Reddit Posts for {{courseName}}</h6>
+            <a href="https://www.reddit.com/r/ASU/search/?q={{courseName}}" class="btn btn-primary">
+                View on Reddit
+            </a>
+        </div>
+        <div class="reddit-card flex-grow-1 flex-shrink-1">
+            <h6>Top Reddit Posts for {{courseName}}</h6>
+            <a href="https://www.reddit.com/r/ASU/search/?q={{courseName}}" class="btn btn-primary">
+                View on Reddit
+            </a>
+        </div>
+        <div class="reddit-card flex-grow-1 flex-shrink-1">
+            <h6>Top Reddit Posts for {{courseName}}</h6>
+            <a href="https://www.reddit.com/r/ASU/search/?q={{courseName}}" class="btn btn-primary">
+                View on Reddit
+            </a>
+        </div>
+    </div>
+</div>
