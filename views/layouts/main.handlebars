@@ -1,98 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CourseSphere</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="main.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CourseSphere</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
 </head>
 <style>
-@media screen and (max-width: 390px) {
-  body {
-    font-size: 16px;
-  }
-
-  .container {
-    width: 95%;
-    padding: 10px;
-  }
-
-  header {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav li {
-    margin: 5px 0;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .cta-button {
-    font-size: 1rem;
+  header,
+  footer {
+    background-color: #8C1D40;
+    margin: 0;
+    border: 0;
     padding: 10px 20px;
-  }
-
-  .features {
-    flex-direction: column;
-  }
-
-  .feature {
     width: 100%;
-    margin-bottom: 20px;
+    box-sizing: border-box;
   }
 
   footer {
-    flex-direction: column;
-    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     text-align: center;
+    color: white;
+    font-size: 1.25rem;
   }
 
-  .footer-links, .social-media {
-    margin-top: 10px;
+  .title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-}
+
+  .auth-buttons {
+    gap: 10px;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+  }
+
+  .register-btn {
+    background-color: white;
+    color: #8C1D40;
+    border-radius: 3px;
+    border: 1px solid white;
+    margin: 5px;
+  }
+
+  .register-btn:hover {
+    text-decoration: none;
+    animation: 1s ease-in;
+    animation-delay: 0.5s;
+    outline: white;
+    background-color: #8C1D40;
+    ;
+    color: white;
+    border-radius: 3px;
+    border: 1px solid white;
+  }
+
+  .login-btn {
+    animation: 1s ease-in;
+    animation-delay: 0.5s;
+    outline: white;
+    background-color: #8C1D40;
+    ;
+    color: white;
+    border-radius: 3px;
+    border: 1px solid white;
+    margin: 5px;
+  }
+
+  .login-btn:hover {
+    text-decoration: none;
+    animation: 1s ease-in;
+    background-color: white;
+    color: #8C1D40;
+    border-radius: 3px;
+    border: 1px solid white;
+  }
+
+  .welcome-message {
+    color: white;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .error-box {
+    background: #f8d7da;
+    border-color: #f1aeb5;
+    color: #58151c;
+    padding: 1em;
+  }
+
+  .card-body {
+    border: 1px solid #8C1D40;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  @media screen and (max-width: 390px) {
+    body {
+      font-size: 16px;
+    }
+
+    .container {
+      width: 95%;
+      padding: 10px;
+    }
+
+    header {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav li {
+      margin: 5px 0;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+    }
+
+    .cta-button {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+
+    .features {
+      flex-direction: column;
+    }
+
+    .feature {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-links,
+    .social-media {
+      margin-top: 10px;
+    }
+  }
 </style>
 
 <body>
-    {{#if user}}
-    <header>
-        <h6>Welcome, {{user}}!</h6>
-        <a href="/logout">Logout</a>
-    </header>
-    {{else}}
-    <header>
-        <div class="title">CourseSphere</div>
-        <div class="auth-buttons">
-            <a class="register-btn" href="/register">Register</a>
-            <a class="login-btn" href="/login">Login</a>
-        </div>
-    </header>
-    {{/if}}
-    
-    {{#if error}}
-    <div class="error-box">
-        {{error}}
+  {{#if user}}
+  <header>
+    <div class="title">CourseSphere</div>
+    <div class="auth-buttons">
+    <h6 class="welcome-message">Welcome, {{user}}!</h6>
     </div>
-    {{/if}}
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <p class="navbar-brand" style="color: white; font-size: 1.5rem;">CourseSphere</p>
+    <div class="right-align">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+         <li class="nav-item">
+          <a class="nav-link login-btn" href="/assistant">Assistant</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link login-btn" href="/messages">Forum</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link register-btn" href="/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</nav>
+    {{!-- <div class="auth-buttons">
+      <a href="/messages" class="login-btn btn btn-primary" style="background-color: #8c1d40; border-color: white;">Forum</a>
+      <a href="/logout" class="login-btn btn btn-primary" style="background-color: #8c1d40; border-color: white;">Logout</a>
+    </div> --}}
+  </header>
+  {{else}}
+  <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <p class="navbar-brand" style="color: white; font-size: 1.5rem;">CourseSphere</p>
+    <div class="right-align">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link login-btn" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link register-btn" href="/register">Register</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</nav>
 
-    {{{body}}}
+    {{!-- <div class="title">CourseSphere</div>
+    <div class="auth-buttons">
+      <a class="register-btn" href="/register" class="btn btn-primary" style="background-color: white; border-color: #8c1d40; padding: 10px; transition: 0.3s ease;">Register</a>
+      <a class="login-btn" href="/login" class="btn btn-primary" style="background-color: #8c1d40; border-color: white; padding: 10px; transition: 0.3s ease;">Login</a>
+    </div> --}}
+  </header>
+  {{/if}}
 
-    <footer style="position: fixed; bottom: 0; width: 100%;">
-        <p>© 2024 CourseSphere, Created by Kumar Harsh, Ansh Gopinath, and Amal Shifwath Shaik.</p>
-    </footer>
+  {{#if error}}
+  <div class="error-box">
+    {{error}}
+  </div>
+  {{/if}}
+
+  {{{body}}}
+
+  <footer>
+    <p>© 2024 CourseSphere, Created by Kumar Harsh, Ansh Gopinath, and Amal Shifwath Shaik.</p>
+  </footer>
 </body>
+
 </html>

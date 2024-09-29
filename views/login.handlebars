@@ -1,9 +1,41 @@
-<form action="/login" method="POST">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username">
-    <br>
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password">
-    <br>
-    <button type="submit">Login</button>
-</form>
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 83vh;
+    }
+
+    .centered-form {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+</style>
+<div class="container">
+    <form action="/login" method="POST" class="centered-form">
+        <p class="lead" style="font-size: 30px; text-align: center;">Login</p>
+        <hr>
+
+        <div class="form-floating mb-3">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+        </div>
+
+        <br>
+
+        <div class="form-floating mb-3">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+            <br>
+        </div>
+
+        <br>
+
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-primary" style="background-color: #8c1d40; border-color: white;">Login</button>
+        </div>
+    </form>
+</div>

@@ -1,7 +1,30 @@
-<link rel="stylesheet" href="../static/main.css">
-<form action="/course" method="GET">
-    <label>Course Name
-        <input type="text" name="courseName">
+<style>
+    form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-group {
+        margin-top: 100px;
+        display: flex;
+        gap: 20px;
+    }
+
+    .next-line {
+        margin-top: 20px;
+    }
+</style>
+
+<form action="/course" method="GET" class="form-group">
+    <label class="col-sm-2 col-form-label lead">Course Code
+        <input type="text" name="courseCode" class="form-control">
     </label>
-    <button type="submit" id="search-btn"> Search </button>
+    <label class="col-sm-2 col-form-label lead ">Course Number
+        <input type="text" name="courseNumber" class="form-control">
+    </label>
+    <div class="next-line">
+    <button type="submit" id="search-btn" class="btn btn-primary"
+        style="background-color: #8c1d40; border-color: white;"> Search </button>
+    </div>
 </form>

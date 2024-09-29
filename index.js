@@ -5,9 +5,57 @@ import { open } from 'sqlite';
 import bcrypt from 'bcrypt';
 import { v4 } from 'uuid';
 import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
+import OpenAI from 'openai';
+import asuClassSearch from './ASUclassSearch.js';
 
 const port = 8080;
 const app = express();
+
+// Load environment variables from .env file
+dotenv.config();
+
+// Middleware to handle JSON requests
+
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+});
+
+// Endpoint to handle chat requests
+app.post('/assistant', async (req, res) => {
+    const { message } = req.body;
+
+    if (!message) {
+        return res.status(400).json({ error: 'Message is required' });
+    }
+
+    const major = "Computer Science";
+    const requirement = "upper-division elective requirements";
+    const classTimePreference = "morning classes, ideally between 9 AM and noon";
+    const courseInterests = ["machine learning", "software development"];
+
+    try {
+        const response = await openai.chat.completions.create({
+            model: "gpt-4o-2024-08-06",
+            messages: [
+                { role: "system", 
+                    content: "You are a campus and academic advisor for Arizona State University. Your role is to assist students with course recommendations, class schedules, and professor suggestions based on their preferences. You can also suggest Google searches related to ASU and include relevant links in your responses. Provide ratings for professors using resources like Rate My Professors. Include links to ASU Class Search and other ASU class-related websites for additional information. Also, provide relevant Reddit links from subreddits like r/ASU regarding class topics. Do not answer unrelated questions, such as how to bake a chocolate cake." 
+                
+                },
+                {
+                    role: "user",
+                    content: message
+                },
+            ],
+        });
+
+        const gptMessage = response.choices[0].message.content;
+        res.json({ message: gptMessage });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ error: 'Something went wrong' });
+    }
+});
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -17,7 +65,6 @@ app.set("view engine", "handlebars");
 app.set("views", "views");
 
 app.use(express.static('/static'));
-
 
 const dbPromise = open({
     filename: './data.db',
@@ -70,15 +117,23 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/course', async (req, res) => {
-    console.log(req.query.courseName);
-    const courseName = req.query.courseName.toString();
-    res.render("course", {layout: "main", courseName: courseName});
-
-    const redditData = await fetch(`https://www.reddit.com/r/ASU/search/?q=${courseName}`)
+    if(!req.query.courseCode || !req.query.courseNumber){
+        return res.render("home", {layout: "main", error: "Invalid Course Code or Number"});
+    }
+    const courseCode = req.query.courseCode.toString();
+    const courseNumber = req.query.courseNumber.toString();
+    const courseName = courseCode + " " + courseNumber;
+    // const data = await asuClassSearch(courseCode, courseNumber);
+    // console.log(data);
+    res.render("course", {layout: "main", courseCode: courseCode, courseNumber: courseNumber, courseName: courseName});
 })
 
 app.get('/register', async (req, res) => {
     res.render("register", {layout: "main"});
+})
+
+app.get('/assistant', async (req, res) => {
+    res.render("assistant", {layout: "main"});
 })
 
 //POST Function for registration.

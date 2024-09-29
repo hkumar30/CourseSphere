@@ -1,0 +1,195 @@
+<style>
+    /*style.css*/
+
+.chatBot{
+    height: 70%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #f7f7f7;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.chatBot {
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(255, 255, 255);
+  box-shadow: none;
+}
+
+header {
+  background-color: #2F8D46;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  height: 120px; /* Set a fixed height for the header */
+}
+
+header h2 {
+  color: #fff;
+  font-size: 80px;
+  line-height: 1;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chatbox {
+  padding: 200px;
+  list-style: none;
+  overflow-y: auto;
+  height: calc(100vh - 160px); /* Adjust height based on header and input area */
+  margin-top: 10px; /* Adjust for the fixed header height */
+}
+
+.chatbox li {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.chat p {
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+.chat-outgoing {
+  justify-content: flex-end; /* Align outgoing messages to the right */
+}
+
+.chat-outgoing p {
+  background-color: #162887;
+  color: #fff;
+  max-width: 50%; /* Limit the width to match the max-width of chat bubbles */
+}
+
+.chat-incoming {
+  justify-content: flex-start; /* Align incoming messages to the left */
+  max-width: 50%;
+}
+
+.chat-incoming p {
+  background-color: #eaeaea;
+}
+
+.chat-input {
+  padding: 200px;
+  position: fixed;
+  bottom: -170px; /* Move the chat input a little towards the bottom */
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center;
+}
+
+.chat-input textarea {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Match the border radius of the chat bubbles */
+  resize: none;
+  outline: none;
+  overflow-y: auto;
+  background-color: #eaeaea; /* Match the background color of the incoming chat bubble */
+  font-size: 16px;
+  color: #333;
+  font-weight: 400;
+  max-height: 120px; /* Limit the height to 5-6 lines */
+  height: 50px; /* Double the initial height */
+  width: 70%; /* Match the width of the chat bubbles */
+}
+
+#sendBTN {
+  width: 50px;
+  height: 50px;
+  border: none;
+  outline: none;
+  background-color: #2F8D46;
+  color: white;
+  border-radius: 50%;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#sendBTN i {
+  font-size: 20px;
+}
+
+#sendBTN:hover {
+  background-color: #1e5e2e;
+}
+
+#cross {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  color: white;
+  font-weight: bolder;
+  font-size: 28px;
+}
+
+#cross:hover {
+  color: red;
+  transition: all .5s;
+}
+
+.chatbox .chat p.error {
+  color: #ffffff;
+  background-color: #ff3737e8;
+}
+
+.lastMessage {
+  margin-top: 50px;
+  font-size: 35px;
+  font-weight: 600;
+  color: darkgreen;
+  margin-left: 550px;
+}
+.chat-input{
+    margin-bottom: 100px;
+}
+</style>
+<div class="chatBot">
+    <header>
+        <h2>Bumble Bee</h2>
+        <span alt="Close" id="cross" onclick="cancel()">X</span>
+    </header>
+    <ul class="chatbox">
+        <li class="chat-incoming chat">
+            <p>Hey Sun Devil! How can I assist you today?</p>
+        </li>
+    </ul>
+    <div class="chat-input">
+        <textarea id="chat-input" rows="2" placeholder="Enter a message..."></textarea>
+        <button id="sendBTN"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<script src="chatbot.js" defer></script>

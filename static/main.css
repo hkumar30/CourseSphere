@@ -9,7 +9,6 @@ header, footer {
 
 .title {
     color: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
     display: flex;

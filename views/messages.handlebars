@@ -1,21 +1,49 @@
-<h1>hello message board!</h1>
+<style>
+    .message-board {
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        height: 100%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-<ul class = "message-list">
-    {{#each messages}}
+    h1 {
+        text-align: center;
+        color: #8c1d40;
+    }
+
+    .message-list {
+        text-align: center;
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .message-list li {
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="message-board" style="height: 100%;">
+    <h1>hello message board!</h1>
+
+    <ul class="message-list" style="font-size: 24px;">
+        {{#each messages}}
         <li>{{author}} said "{{message}}"</li>
-    {{/each}}
-</ul>
+        {{/each}}
+    </ul>
 
-{{#if user}}
-<form action="/messages" method="POST" class = "message-form">
-    <label> Message
-        <input type="text" name="message" />
-    </label>
-    <button type="submit" id = "message-submit"> Send </button>
-</form>
-{{else}}
-<h6>Please login to send a message.</h6>
-{{/if}}
+    {{#if user}}
+    <form action="/messages" method="POST" class="message-form">
+        <div class="form-floating mb-3" style="display: flex; justify-content: center; align-items: center;">
+            <label for="messageInput" class="lead" style="font-size: 20px; padding-right: 10px;"> Message </label>
+            <input type="text" name="message" class="form-control message-input" id="messageInput" style="width: 80%"/>
+            <button type="submit" id="message-submit" class="btn btn-primary" style="background-color: #8c1d40; border-color: white; padding-left: 10px; padding-right: 10px;"> Send </button>
+        </div>
+    </form>
+    {{else}}
+    <h6>Please login to send a message.</h6>
+    {{/if}}
+</div>
 
 <script>
     function messageColor {
@@ -23,5 +51,5 @@
         document.body.style.backgroundColor = "#" + hexColor;
     }
 
-    message-submit.addEventListener("click", messageColor);
+    message - submit.addEventListener("click", messageColor);
 </script>
