@@ -3,20 +3,20 @@ CourseSphere allows students to discover top professors, view course ratings fro
 
 1. Clone the Repository
 
-git clone https://github.com/hkumar30/CourseSphere.git
+	git clone https://github.com/hkumar30/CourseSphere.git
 
 2. Install Dependencies
 
-npm install
+	npm install
 
 3. Initialize and Start
 
-npm start
+	npm start
 
 Alternatively,
 
-npm run migrate
-node index.js
+	npm run migrate
+	node index.js
 
 
 # Usage
