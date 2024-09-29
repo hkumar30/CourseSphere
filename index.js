@@ -113,6 +113,10 @@ app.get('/', async (req, res) => {
 
     console.log("Name: ", name);
 
+    setTimeout(() => {
+        console.log("Await for 1 second.");
+      }, 3000);
+
     res.render("home", {layout: "main", user: name});
 });
 
@@ -120,12 +124,74 @@ app.get('/course', async (req, res) => {
     if(!req.query.courseCode || !req.query.courseNumber){
         return res.render("home", {layout: "main", error: "Invalid Course Code or Number"});
     }
+
     const courseCode = req.query.courseCode.toString();
     const courseNumber = req.query.courseNumber.toString();
     const courseName = courseCode + " " + courseNumber;
+
+    let courseTitle = "";
+    let courseDescription = "";
+    let courseInstructor = "";
+    let instructorLink = "";
+    let courseDifficulty = "";
+    let instructorRating = "";
+
+    if(courseName === "CSE 340"){
+        courseTitle = "Programming Language Concepts";
+        courseDescription = "Formal syntactic and semantic descriptions, compilation and implementation issues, and theoretical foundations for several programming paradigms.";
+        courseInstructor = "Rida Bazzi";
+        instructorLink = "https://www.ratemyprofessors.com/professor/518501";
+        courseDifficulty = "4.5";
+        instructorRating = "3.3";
+    }
+
+    else if(courseName === "CSE 310"){
+        courseTitle = "Data Structures and Algorithms";
+        courseDescription = "Advanced data structures and algorithms, including stacks, queues, trees (B, B+, AVL), and graphs. Searching for graphs, hashing, external sorting.";
+        courseInstructor = "Xuerong Feng";
+        instructorLink = "https://www.ratemyprofessors.com/professor/1167426";
+        courseDifficulty = "3.8";
+        instructorRating = "3.4";
+    }
+
+    else if(courseName === "CSE 475"){
+        courseTitle = "Foundations of Machine Learning";
+        courseDescription = "Machine learning techniques: supervised learning, unsupervised learning, and neural networks and deep learning.";
+        courseInstructor = "Paulo Shakarian";
+        instructorLink = "https://www.ratemyprofessors.com/professor/1961893";
+        courseDifficulty = "4.1";
+        instructorRating = "3.8";
+    }
+
+    else if(courseName === "CSE 110"){
+        courseTitle = "Principles of Programming";
+        courseDescription = "Concepts of problem solving using an object-oriented programming language, algorithm design, structured programming, fundamental algorithms and techniques.";
+        courseInstructor = "Phillip Miller";
+        instructorLink = "https://www.ratemyprofessors.com/professor/1834878";
+        courseDifficulty = "1.9";
+        instructorRating = "4.8";
+    }
+
+    else if(courseName === "CSE 205"){
+        courseTitle = "Object-Oriented Programming and Data Structures";
+        courseDescription = "Problem solving by programming with an object-oriented programming language. Introduces data structures. Overview of computer science topics.";
+        courseInstructor = "Phillip Miller";
+        instructorLink = "https://www.ratemyprofessors.com/professor/1834878";
+        courseDifficulty = "2.2";
+        instructorRating = "4.8";
+    }
+
+    else if(courseName === "CSE 450"){
+        courseTitle = "Algorithm Design and Analysis";
+        courseDescription = "Software development process, requirements analysis, design, implementation, testing, and maintenance of software systems.";
+        courseInstructor = "Andrea Richa";
+        instructorLink = "https://www.ratemyprofessors.com/professor/1288646";
+        courseDifficulty = "4.6";
+        instructorRating = "3.7";
+    }
     // const data = await asuClassSearch(courseCode, courseNumber);
     // console.log(data);
-    res.render("course", {layout: "main", courseCode: courseCode, courseNumber: courseNumber, courseName: courseName});
+    res.render("course", {layout: "main", courseCode: courseCode, courseNumber: courseNumber, courseName: courseName, courseTitle: courseTitle, courseDescription: courseDescription, courseInstructor: courseInstructor, instructorLink: instructorLink, courseDifficulty: courseDifficulty, instructorRating: instructorRating});
 })
 
 app.get('/register', async (req, res) => {

@@ -33,7 +33,7 @@
 
   .title {
     color: white;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -173,14 +173,17 @@
   <header>
     <div class="title">CourseSphere</div>
     <div class="auth-buttons">
-    <h6 class="welcome-message">Welcome, {{user}}!</h6>
+    <h6 class="welcome-message" style="padding: 10px;">Welcome, {{user}}!</h6>
     </div>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <p class="navbar-brand" style="color: white; font-size: 1.5rem;">CourseSphere</p>
+    <p class="navbar-brand" style="color: white; font-size: 1.5rem;"></p>
     <div class="right-align">
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link login-btn" href="/">Home</a>
+        </li>
          <li class="nav-item">
           <a class="nav-link login-btn" href="/assistant">Assistant</a>
         </li>
@@ -208,6 +211,9 @@
     <div class="right-align">
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link login-btn" href="/">Home</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link login-btn" href="/login">Login</a>
         </li>
